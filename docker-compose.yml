@@ -1,0 +1,20 @@
+version: '3'
+services:
+  fastapi:
+    build: .
+    command: bash -c 'uvicorn app.main:app --host 0.0.0.0'
+    volumes:
+      - .:/app
+    ports:
+      - 8008:8000
+    environment:
+      - TESSDATA_PREFIX=/usr/local/share/tessdata/
+    #    - DATABASE_URL=postgresql://fastapi_traefik:fastapi_traefik@db:5432/fastapi_traefik
+    #    - SECRET_KEY=2f92041b9c778316ebbaf5e639c19d1088e6372f8904728eaa1f79a30cd05e2e
+    #    - ALGORITHM=HS256
+   # depends_on:
+     # - tesseract
+  #tesseract:
+   # build:
+   #   context: .
+   #   dockerfile: Dockerfile-tesseract
